@@ -15,7 +15,9 @@ ARG BUILD_ARGS
 COPY . .
 
 # RUN cargo build --release $BUILD_ARGS
-RUN cargo build --features with-karura-runtime
+RUN cargo build --release --features with-karura-runtime
+
+RUN ls /app/target/release/
 
 # =============
 
