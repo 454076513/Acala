@@ -24,6 +24,9 @@ WORKDIR /app
 
 COPY . /app
 
+RUN rustup default nightly-2021-06-17
+
+RUN rustup target add wasm32-unknown-unknown --toolchain nightly-2021-06-17
 
 RUN cargo +nightly build --release --features with-karura-runtime
 
