@@ -33,7 +33,8 @@ COPY . /app
 
 # RUN sh scripts/init.sh
 
-RUN cargo +nightly build --release --features with-karura-runtime
+# RUN cargo +nightly build --release --features with-karura-runtime
+RUN cargo build --release --features with-karura-runtime
 
 # RUN ls /app/target/release/
 
