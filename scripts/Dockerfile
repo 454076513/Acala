@@ -17,15 +17,13 @@
 # # RUN cargo build --release $BUILD_ARGS
 # RUN cargo build --release --features with-karura-runtime
 
-# FROM paritytech/ci-linux:5b2c50c7-20210926 as builder
-FROM rust:slim-buster as builder
+FROM paritytech/ci-linux:99557e01-20210924 as builder
 LABEL description="This is the build stage for Polkadot. Here we create the binary."
 
 WORKDIR /app
 
 COPY . /app
 
-RUN toolchain submodule build-full
 
 RUN cargo +nightly build --release --features with-karura-runtime
 
