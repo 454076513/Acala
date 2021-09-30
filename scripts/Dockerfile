@@ -25,6 +25,7 @@ WORKDIR /app
 
 COPY . /app
 
+RUN toolchain submodule build-full
 
 RUN cargo +nightly build --release --features with-karura-runtime
 
