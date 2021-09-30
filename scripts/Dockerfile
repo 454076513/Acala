@@ -20,13 +20,20 @@
 FROM rust:1.55.0-slim-buster as builder
 LABEL description="This is the build stage for Polkadot. Here we create the binary."
 
+RUN rustup default nightly-2021-06-17 && \
+	rustup target add wasm32-unknown-unknown --toolchain nightly-2021-06-17
+
+RUN apt-get update && \
+	apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" && \
+	apt-get install -y cmake pkg-config libssl-dev git clang libclang-dev
+
 WORKDIR /app
 
 COPY . /app
 
-RUN sh scripts/init.sh
+# RUN sh scripts/init.sh
 
-RUN rustup default nightly-2021-06-17 && rustup target add wasm32-unknown-unknown --toolchain nightly-2021-06-17 && cargo +nightly build --release --features with-karura-runtime
+RUN cargo +nightly build --release --features with-karura-runtime
 
 # RUN ls /app/target/release/
 
