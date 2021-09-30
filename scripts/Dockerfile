@@ -17,7 +17,7 @@
 # # RUN cargo build --release $BUILD_ARGS
 # RUN cargo build --release --features with-karura-runtime
 
-FROM paritytech/ci-linux:staging-1.55.0 as builder
+FROM paritytech/ci-linux:staging-1.54.0 as builder
 LABEL description="This is the build stage for Polkadot. Here we create the binary."
 
 WORKDIR /app
